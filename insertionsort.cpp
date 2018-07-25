@@ -13,27 +13,32 @@ void swap(int array[], int first_index, int second_index);
 void sort(int array[], int size);
 void displayArray(int array[], int size);
 
-int main(){
+int main() {
 
-	int array[10]; 
+	int arraySize;
+	cout << "Please enter the number of elements you would like to sort: " << "\n";
+	cin >> arraySize;
+	// dynamic array is used to allow the insertion sort
+	// function work with any size array.
+	int *array = new int[arraySize];
 	srand(time(NULL));
-	
-	for (int i = 0; i < 10; i++) {
+
+	for (int i = 0; i < arraySize; i++) {
 
 		// keep the numbers small so they're easy to read
 		array[i] = rand() % 100;
 	}
 	cout << "Original array: ";
-	displayArray(array, 10);
+	displayArray(array, arraySize);
 	cout << "\n";
-	
-	sort(array, 10);
-	
+
+	sort(array, arraySize);
+
 	cout << "Sorted array: ";
-	displayArray(array, 10);
+	displayArray(array,arraySize);
 	cout << "\n";
 	system("pause");
-    return 0;
+	return 0;
 }
 
 void sort(int array[], int size) {
@@ -67,7 +72,8 @@ void swap(int array[], int first_index, int second_index) {
 
 }
 
-// small helper function to display the before and after arrays 
+// used to make the display of the arrays 
+// look pretty
 void displayArray(int array[], int size) {
 
 	cout << "{";
